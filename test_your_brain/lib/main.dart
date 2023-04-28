@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'screens/Welcome_Page.dart';
+import 'package:test_your_brain/screens/start_screen.dart';
+import 'package:test_your_brain/screens/welcome_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,15 +12,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Test your Brain',
-      home: WelcomePage(),
+      title: 'test_your_brain',
+      theme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color.fromARGB(255, 83, 49, 157),
+        ),
+      ),
+      //home: WelcomePage(),
       //route to other pages(widgets)
       routes: {
-        // MainRoomChoice.routeName: (context) => const MainRoomChoice(),
-        // JoinRoomScreen.routeName: (context) => const JoinRoomScreen(),
+        WelcomePage.routeName: (context) => const WelcomePage(),
+        StartScreen.routeName: (context) => const StartScreen(),
         // CreateRoomScreen.routeName: (context) => const CreateRoomScreen(),
       },
-      // initialRoute: MainRoomChoice.routeName,
+      initialRoute: WelcomePage.routeName,
     );
   }
 }

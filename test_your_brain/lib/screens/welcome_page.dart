@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:test_your_brain/screens/start_screen.dart';
 import 'package:test_your_brain/utils/color.dart';
 
-class WelcomePage extends StatefulWidget {
+class WelcomePage extends StatelessWidget {
   //routes for after this page
   static String routeName = '/welcome-page-screen';
   const WelcomePage({super.key});
+  //focntions
 
-  @override
-  State<WelcomePage> createState() => _WelcomePageState();
-}
+  void nextScreen(BuildContext context) {
+    Navigator.pushNamed(context, StartScreen.routeName);
+  }
 
-class _WelcomePageState extends State<WelcomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +40,7 @@ class _WelcomePageState extends State<WelcomePage> {
             ),
             const SizedBox(height: 30),
             ElevatedButton(
-                onPressed: () {},
+                onPressed: () => nextScreen(context),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white,
                   textStyle: const TextStyle(
