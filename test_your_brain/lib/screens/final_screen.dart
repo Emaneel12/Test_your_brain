@@ -49,7 +49,7 @@ class FinalScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-
+                    'Your score is ' + score.toString() + '/20',
                     style: TextStyle(fontSize: 30.0),
                   ),
                 ],

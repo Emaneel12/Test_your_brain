@@ -167,6 +167,17 @@ class _GameScreenState extends State<GameScreen> {
     });
     ++i;
     Cond();
+  }
+
+  void Cond() {
+    if (i == 20) {
+      Navigator.pushNamed(
+        context,
+        FinalScreen.routeName,
+        arguments: {'score': score},
+      );
+    }
+  }
 
 //function
   //void EndOfGame(BuildContext context) {
