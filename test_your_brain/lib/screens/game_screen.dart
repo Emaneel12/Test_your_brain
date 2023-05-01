@@ -145,18 +145,23 @@ class _GameScreenState extends State<GameScreen> {
     return Scaffold(
       backgroundColor: MyColors.myColor,
       appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          'Test Your Brain',
-          style: TextStyle(color: Colors.white),
-          textAlign: TextAlign.center,
-        ),
-        elevation: 10,
-        backgroundColor: Color.fromARGB(255, 3, 22, 98),
-        leading: Container(
-          child: Image.asset('images/logo_image.jpg'),
-        ),
-      ),
+          centerTitle: true,
+          title: Text(
+            'Test Your Brain',
+            style: TextStyle(color: Colors.white),
+            textAlign: TextAlign.center,
+          ),
+          elevation: 10,
+          backgroundColor: Color.fromARGB(255, 3, 22, 98),
+          leading: Container(
+            padding: EdgeInsets.all(1),
+            width: 200, // increase the width to 200
+            height: 100, // increase the height to 100
+            child: Image.asset(
+              'images/logo_image.jpg',
+              fit: BoxFit.contain,
+            ),
+          )),
       body: Column(
         children: [
           //logo and Timer////////////////////////////////////////////////
