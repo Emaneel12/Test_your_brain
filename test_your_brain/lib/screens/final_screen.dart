@@ -17,6 +17,18 @@ class FinalScreen extends StatelessWidget {
         ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     final score = args['score'] as int;
 
+    ////////// Level//////////////////
+    String level;
+    if (score <= 5) {
+      level = 'Beginner';
+    } else if (score <= 10) {
+      level = 'Intermediate';
+    } else if (score <= 15) {
+      level = 'Advanced';
+    } else {
+      level = 'Expert';
+    }
+
     return Scaffold(
       backgroundColor: MyColors.myColor,
       body: Center(
@@ -50,30 +62,36 @@ class FinalScreen extends StatelessWidget {
                 children: [
                   Text(
                     'Your score is ' + score.toString() + '/20',
-                    style: TextStyle(fontSize: 30.0),
-                  ),
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold, // add this line
+                    ),
+                  )
                 ],
               ),
             ),
             const SizedBox(height: 20),
             //IF WE WANT TO ADD A LEVEL LATER
-            /*Container(
+            Container(
               width: 500,
-              height: 80,
+              height: 60,
               decoration: BoxDecoration(
                 color: MyColors.boxColor,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: const Center(
+              child: Center(
                 child: Text(
-                  'Level y', //to complete later
+                  'Your are at the ' +
+                      level +
+                      ' level', // Remove "const" from here
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
-            ),*/
+            ),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () => startGame(context),
               style: ElevatedButton.styleFrom(

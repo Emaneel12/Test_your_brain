@@ -25,9 +25,7 @@ class StartScreen extends StatelessWidget {
             ),
             SizedBox(
               height: 100,
-
               width: 350,
-
               child: Image.asset('images/logo_image.jpg'),
             ),
             //space
@@ -37,7 +35,7 @@ class StartScreen extends StatelessWidget {
               child: SizedBox(
                 width: 300,
                 child: Text(
-                  'In this game you will solve 20 mathematic operations the maximum time to solve each operation is 10s in the end you will know your score on 20',
+                  'In this game ,you will solve 20 mathematic operations , each correct answer will earn you a point , but be carefull there is no coming back ',
                   textAlign: TextAlign.justify,
                   style: TextStyle(
                     fontSize: 20,
