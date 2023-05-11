@@ -42,8 +42,10 @@ class MyApp extends StatelessWidget {
       //route to other pages(widgets)
       routes: {
         WelcomePage.routeName: (context) => const WelcomePage(),
-        StartScreen.routeName: (context) => const StartScreen(),
-        GameScreen.routeName: (context) => const GameScreen(),
+        StartScreen.routeName: (context) => StartScreen(),
+        GameScreen.routeName: (context) => GameScreen(
+              name: '',
+            ),
         FinalScreen.routeName: (context) => const FinalScreen(),
       },
       // initialRoute: FinalScreen.routeName,

@@ -7,8 +7,9 @@ import '../utils/random_operators.dart';
 
 class GameScreen extends StatefulWidget {
   //route
+  final String name;
   static String routeName = '/game-screen';
-  const GameScreen({super.key});
+  GameScreen({super.key, required this.name});
 
   @override
   State<GameScreen> createState() => _GameScreenState();
@@ -41,6 +42,9 @@ class _GameScreenState extends State<GameScreen> {
   RandomOperations randomOperators = RandomOperations();
   //user's answer////////////
   String userAnswer = '';
+
+  get name => null;
+
   //tapped button/////////////////////////////////
   void tappedButton(String clicked) {
     setState(() {
@@ -221,6 +225,9 @@ class _GameScreenState extends State<GameScreen> {
       ),
       body: Column(
         children: [
+          Text(
+            "Hello " + widget.name,
+          ),
           //logo and Timer////////////////////////////////////////////////
 
           //operation//////////////////////////////////////////////////////

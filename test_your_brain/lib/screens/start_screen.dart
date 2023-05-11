@@ -4,8 +4,9 @@ import 'package:test_your_brain/screens/game_screen.dart';
 import '../styles/color.dart';
 
 class StartScreen extends StatelessWidget {
+  TextEditingController name = TextEditingController();
   static String routeName = '/start-game-screen';
-  const StartScreen({super.key});
+  StartScreen({super.key});
 
   //function
   void startGame(BuildContext context) {
@@ -16,7 +17,7 @@ class StartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: MyColors.myColor,
-        body: Column(
+        body: ListView(
           // mainAxisAlignment: MainAxisAlignment.center,
           //space
           children: [
@@ -48,9 +49,25 @@ class StartScreen extends StatelessWidget {
 
             //space
             const SizedBox(height: 50),
+            TextField(
+              controller: name,
+              decoration: InputDecoration(
+                labelText: 'Entrer votre nom',
+              ),
+              onChanged: (value) {
+                // Gérer les changements de texte
+              },
+            ),
             //button
             ElevatedButton(
-                onPressed: () => startGame(context),
+                onPressed: () => {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => GameScreen(
+                                    name: name.text,
+                                  )))
+                    },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.white,
                   textStyle: const TextStyle(
