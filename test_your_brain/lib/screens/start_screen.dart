@@ -10,7 +10,11 @@ class StartScreen extends StatelessWidget {
 
   //function
   void startGame(BuildContext context) {
-    Navigator.pushNamed(context, GameScreen.routeName);
+    Navigator.pushNamed(
+      context,
+      GameScreen.routeName,
+      arguments: {'name': name},
+    );
   }
 
   @override
@@ -49,15 +53,17 @@ class StartScreen extends StatelessWidget {
 
             //space
             const SizedBox(height: 50),
-            TextField(
-              controller: name,
-              decoration: InputDecoration(
-                labelText: 'Entrer votre nom',
-              ),
-              onChanged: (value) {
-                // Gérer les changements de texte
-              },
-            ),
+            Builder(builder: (context) {
+              return TextField(
+                controller: name,
+                decoration: InputDecoration(
+                  labelText: 'Entrer votre nom',
+                ),
+                onChanged: (value) {
+                  // Gérer les changements de texte
+                },
+              );
+            }),
             //button
             ElevatedButton(
                 onPressed: () => {

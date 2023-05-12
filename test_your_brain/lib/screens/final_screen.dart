@@ -1,15 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:test_your_brain/screens/game_screen.dart';
-import '../styles/color.dart';
 
-class FinalScreen extends StatelessWidget {
+import '../styles/color.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+class FinalScreen extends StatefulWidget {
   static const routeName = '/final-screen';
 
+  const FinalScreen({Key? key}) : super(key: key);
+
+  @override
+  State<FinalScreen> createState() => _FinalScreenState();
+}
+
+class _FinalScreenState extends State<FinalScreen> {
   void startGame(BuildContext context) {
     Navigator.pushNamed(context, GameScreen.routeName);
   }
 
-  const FinalScreen({super.key});
+  //Retrieve the old score from shared preferences
+  Future<int> getOldScore() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getInt('score') ?? 0;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +41,10 @@ class FinalScreen extends StatelessWidget {
     } else {
       level = 'Expert';
     }
+    //the old score var
+    final Future<int> oldScore = getOldScore();
 
+    //////////////////SCAFOLD /////////////////////////////////////////////////////////////////////////
     return Scaffold(
       backgroundColor: MyColors.myColor,
       body: Center(
@@ -49,6 +65,8 @@ class FinalScreen extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
+
+            //current score
             const SizedBox(height: 30),
             Container(
               width: 500,
@@ -61,11 +79,43 @@ class FinalScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Your score is ' + score.toString() + '/20',
-                    style: TextStyle(
+                    'Your current score is $score/20',
+                    style: const TextStyle(
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold, // add this line
                     ),
+                  )
+                ],
+              ),
+            ),
+            //old score
+            const SizedBox(height: 15),
+            Container(
+              width: 500,
+              height: 80,
+              decoration: BoxDecoration(
+                color: MyColors.boxColor,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  FutureBuilder<int>(
+                    future: oldScore,
+                    builder:
+                        (BuildContext context, AsyncSnapshot<int> snapshot) {
+                      if (snapshot.hasData) {
+                        return Text('Your best score is ${snapshot.data}/20 ',
+                            style: const TextStyle(
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.bold,
+                            ));
+                      } else if (snapshot.hasError) {
+                        return Text("Error: ${snapshot.error}");
+                      } else {
+                        return const CircularProgressIndicator();
+                      }
+                    },
                   )
                 ],
               ),
@@ -81,10 +131,8 @@ class FinalScreen extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  'Your are at the ' +
-                      level +
-                      ' level', // Remove "const" from here
-                  style: TextStyle(
+                  'Your are at the $level level', // Remove "const" from here
+                  style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
@@ -92,6 +140,7 @@ class FinalScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
+
             ElevatedButton(
               onPressed: () => startGame(context),
               style: ElevatedButton.styleFrom(

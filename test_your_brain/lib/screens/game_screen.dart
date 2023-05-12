@@ -4,6 +4,7 @@ import 'package:test_your_brain/utils/pad_buttons.dart';
 import 'package:test_your_brain/styles/text_styles.dart';
 import 'package:test_your_brain/screens/final_screen.dart';
 import '../utils/random_operators.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class GameScreen extends StatefulWidget {
   //route
@@ -79,42 +80,43 @@ class _GameScreenState extends State<GameScreen> {
       score += 1;
       // user is correct
       showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
-              content: Container(
-                height: 200,
-                color: Colors.green,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    const Text(
-                      'Correct answer',
-                      style: SmallTextStyle.smallTextStyle,
-                    ),
-                    GestureDetector(
-                      onTap: () =>
-                          nextOperation(), // move to next operation immediately
-                      child: Container(
-                        height: 36,
-                        width: 36,
-                        decoration: BoxDecoration(
-                          color: Colors.green[300],
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        child: const Icon(
-                          Icons.arrow_forward,
-                          color: Colors.white,
-                        ),
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            content: Container(
+              height: 200,
+              color: Colors.green,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  const Text(
+                    'Correct answer',
+                    style: SmallTextStyle.smallTextStyle,
+                  ),
+                  GestureDetector(
+                    onTap: () =>
+                        nextOperation(), // move to next operation immediately
+                    child: Container(
+                      height: 36,
+                      width: 36,
+                      decoration: BoxDecoration(
+                        color: Colors.green[300],
+                        borderRadius: BorderRadius.circular(8),
                       ),
-                    )
-                    //button to the next operation
-                  ],
-                ),
+                      child: const Icon(
+                        Icons.arrow_forward,
+                        color: Colors.white,
+                      ),
+                    ),
+                  )
+                  //button to the next operation
+                ],
               ),
-            );
-          });
-
+            ),
+          );
+        },
+      );
+      saveScore(score); // Save the score
       //score
     } else {
       //// if the answer is incorrect, keep the current operation and reset the user's answer
@@ -175,6 +177,7 @@ class _GameScreenState extends State<GameScreen> {
   void Cond() {
     ///i=4 for now , just for test , will be changed later to 20
     if (i == 4) {
+      saveScore(score); // Save the score
       Navigator.pushNamed(
         context,
         FinalScreen.routeName,
@@ -183,7 +186,17 @@ class _GameScreenState extends State<GameScreen> {
     }
   }
 
+  void saveScore(int score) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    int oldScore = prefs.getInt('score') ?? 0;
+
+    if (score > oldScore) {
+      prefs.setInt('score', score);
+    }
+  }
+
 //function to condition the LEVEL///
+
   /*void levelCond() {
     if (score < 5) {
       level = "very Bad";
@@ -226,7 +239,7 @@ class _GameScreenState extends State<GameScreen> {
       body: Column(
         children: [
           Text(
-            "Hello " + widget.name,
+            "Hello ${widget.name}",
           ),
           //logo and Timer////////////////////////////////////////////////
 
