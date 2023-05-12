@@ -29,6 +29,7 @@ class FinalScreen extends StatelessWidget {
       level = 'Expert';
     }
 
+    var oldScore = 2;
     return Scaffold(
       backgroundColor: MyColors.myColor,
       body: Center(
@@ -49,6 +50,7 @@ class FinalScreen extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
+            //current score
             const SizedBox(height: 30),
             Container(
               width: 500,
@@ -61,7 +63,29 @@ class FinalScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Your score is ' + score.toString() + '/20',
+                    'Your current score is ' + score.toString() + '/20',
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold, // add this line
+                    ),
+                  )
+                ],
+              ),
+            ),
+            //old score
+            const SizedBox(height: 15),
+            Container(
+              width: 500,
+              height: 60,
+              decoration: BoxDecoration(
+                color: MyColors.boxColor,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Your old score is $oldScore/20',
                     style: TextStyle(
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold, // add this line
@@ -92,6 +116,7 @@ class FinalScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
+
             ElevatedButton(
               onPressed: () => startGame(context),
               style: ElevatedButton.styleFrom(
