@@ -169,10 +169,10 @@ class _GameScreenState extends State<GameScreen> {
       userAnswer = '';
     });
     ++i;
-    cond();
+    Cond();
   }
 
-  void cond() {
+  void Cond() {
     ///i=4 for now , just for test , will be changed later to 20
     if (i == 4) {
       Navigator.pushNamed(
@@ -225,7 +225,6 @@ class _GameScreenState extends State<GameScreen> {
       ),
       body: Column(
         children: [
-          /////////////name of the player
           Text(
             "Hello " + widget.name,
           ),

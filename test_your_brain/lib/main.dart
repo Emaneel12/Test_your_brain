@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
           backgroundColor: MyColors.myColor,
           splashTransition: SplashTransition.rotationTransition,
           splashIconSize: 200,
-          splash: const CircleAvatar(
+          splash: CircleAvatar(
             radius: 100,
             backgroundImage: AssetImage("images/logo_image.jpeg"),
           ),

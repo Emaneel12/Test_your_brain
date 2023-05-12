@@ -51,7 +51,7 @@ class StartScreen extends StatelessWidget {
             const SizedBox(height: 50),
             TextField(
               controller: name,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 labelText: 'Entrer votre nom',
               ),
               onChanged: (value) {

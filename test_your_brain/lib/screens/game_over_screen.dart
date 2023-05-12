@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:test_your_brain/screens/start_screen.dart';
 import 'package:test_your_brain/styles/color.dart';
 import 'package:test_your_brain/utils/pad_buttons.dart';
 import 'package:test_your_brain/styles/text_styles.dart';
 import 'package:test_your_brain/screens/final_screen.dart';
+import '../utils/errors_handle.dart';
 import '../utils/random_operators.dart';
 
 class GameScreen extends StatefulWidget {
@@ -134,7 +136,7 @@ class _GameScreenState extends State<GameScreen> {
                         height: 36,
                         width: 36,
                         decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 217, 11, 11),
+                          color: Color.fromARGB(255, 217, 11, 11),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: const Icon(
@@ -167,7 +169,6 @@ class _GameScreenState extends State<GameScreen> {
     Cond();
   }
 
-  // ignore: non_constant_identifier_names
   void Cond() {
     if (i == 20) {
       Navigator.pushNamed(
@@ -190,14 +191,13 @@ class _GameScreenState extends State<GameScreen> {
       backgroundColor: MyColors.myColor,
       appBar: AppBar(
         centerTitle: true,
-        title: const Text(
+        title: Text(
           'Test Your Brain',
           style: TextStyle(color: Colors.white),
           textAlign: TextAlign.center,
         ),
         elevation: 10,
-        backgroundColor: const Color.fromARGB(255, 3, 22, 98),
-        // ignore: avoid_unnecessary_containers
+        backgroundColor: Color.fromARGB(255, 3, 22, 98),
         leading: Container(
           child: Image.asset('images/logo_image.jpg'),
         ),
