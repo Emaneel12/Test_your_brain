@@ -5,8 +5,8 @@ import 'package:test_your_brain/screens/start_screen.dart';
 import 'package:test_your_brain/screens/welcome_page.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:page_transition/page_transition.dart';
-
 import 'package:test_your_brain/styles/color.dart';
+import 'package:dcdg/dcdg.dart';
 
 void main() {
   runApp(const MyApp());

@@ -1,0 +1,135 @@
+@startuml test_your_brain
+set namespaceSeparator ::
+
+class "test_your_brain::utils::pad_buttons.dart::NumberButton" {
+  +String child
+  +void Function() onTap
+  +Color buttonColor
+  +Widget build()
+}
+
+"test_your_brain::utils::pad_buttons.dart::NumberButton" o-- "dart::ui::void Function()"
+"test_your_brain::utils::pad_buttons.dart::NumberButton" o-- "dart::ui::Color"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "test_your_brain::utils::pad_buttons.dart::NumberButton"
+
+class "test_your_brain::utils::random_operators.dart::RandomOperations" {
+  +int? firstNumber
+  +int? secondNumber
+  +String? operator
+  +int getCorrectAnswer()
+}
+
+class "test_your_brain::utils::errors_handle.dart::ErrorHandler" {
+  {static} +void showError()
+}
+
+class "test_your_brain::screens::welcome_page.dart::WelcomePage" {
+  {static} +String routeName
+  +void nextScreen()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "test_your_brain::screens::welcome_page.dart::WelcomePage"
+
+class "test_your_brain::screens::final_screen.dart::FinalScreen" {
+  {static} +String routeName
+  +State<FinalScreen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "test_your_brain::screens::final_screen.dart::FinalScreen"
+
+class "test_your_brain::screens::final_screen.dart::_FinalScreenState" {
+  +void startGame()
+  +Future<int> getOldScore()
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::State" <|-- "test_your_brain::screens::final_screen.dart::_FinalScreenState"
+
+class "test_your_brain::screens::game_screen.dart::GameScreen" {
+  +String name
+  {static} +String routeName
+  +State<GameScreen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "test_your_brain::screens::game_screen.dart::GameScreen"
+
+class "test_your_brain::screens::game_screen.dart::_GameScreenState" {
+  +int score
+  +String level
+  +List<String> numberPad
+  +RandomOperations randomOperators
+  +String userAnswer
+  +int i
+  +dynamic name
+  +void tappedButton()
+  +int checkResult()
+  +void nextOperation()
+  +void Cond()
+  +void saveScore()
+  +Widget build()
+}
+
+"test_your_brain::screens::game_screen.dart::_GameScreenState" o-- "test_your_brain::utils::random_operators.dart::RandomOperations"
+"flutter::src::widgets::framework.dart::State" <|-- "test_your_brain::screens::game_screen.dart::_GameScreenState"
+
+class "test_your_brain::screens::game_over_screen.dart::GameScreen" {
+  {static} +String routeName
+  +State<GameScreen> createState()
+}
+
+"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "test_your_brain::screens::game_over_screen.dart::GameScreen"
+
+class "test_your_brain::screens::game_over_screen.dart::_GameScreenState" {
+  +int score
+  +List<String> numberPad
+  +RandomOperations randomOperators
+  +String userAnswer
+  +int i
+  +void tappedButton()
+  +int checkResult()
+  +void nextOperation()
+  +void Cond()
+  +Widget build()
+}
+
+"test_your_brain::screens::game_over_screen.dart::_GameScreenState" o-- "test_your_brain::utils::random_operators.dart::RandomOperations"
+"flutter::src::widgets::framework.dart::State" <|-- "test_your_brain::screens::game_over_screen.dart::_GameScreenState"
+
+class "test_your_brain::screens::start_screen.dart::StartScreen" {
+  +TextEditingController name
+  {static} +String routeName
+  +void startGame()
+  +Widget build()
+}
+
+"test_your_brain::screens::start_screen.dart::StartScreen" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "test_your_brain::screens::start_screen.dart::StartScreen"
+
+class "test_your_brain::main.dart::MyApp" {
+  +Widget build()
+}
+
+"flutter::src::widgets::framework.dart::StatelessWidget" <|-- "test_your_brain::main.dart::MyApp"
+
+class "test_your_brain::styles::text_styles.dart::NumberTextStyle" {
+  {static} +TextStyle numberTextStyle
+}
+
+"test_your_brain::styles::text_styles.dart::NumberTextStyle" o-- "flutter::src::painting::text_style.dart::TextStyle"
+
+class "test_your_brain::styles::text_styles.dart::SmallTextStyle" {
+  {static} +TextStyle smallTextStyle
+}
+
+"test_your_brain::styles::text_styles.dart::SmallTextStyle" o-- "flutter::src::painting::text_style.dart::TextStyle"
+
+class "test_your_brain::styles::color.dart::MyColors" {
+  {static} +Color myColor
+  {static} +Color boxColor
+}
+
+"test_your_brain::styles::color.dart::MyColors" o-- "dart::ui::Color"
+
+
+@enduml
