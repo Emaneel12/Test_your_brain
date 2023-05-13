@@ -73,29 +73,6 @@ class "test_your_brain::screens::game_screen.dart::_GameScreenState" {
 "test_your_brain::screens::game_screen.dart::_GameScreenState" o-- "test_your_brain::utils::random_operators.dart::RandomOperations"
 "flutter::src::widgets::framework.dart::State" <|-- "test_your_brain::screens::game_screen.dart::_GameScreenState"
 
-class "test_your_brain::screens::game_over_screen.dart::GameScreen" {
-  {static} +String routeName
-  +State<GameScreen> createState()
-}
-
-"flutter::src::widgets::framework.dart::StatefulWidget" <|-- "test_your_brain::screens::game_over_screen.dart::GameScreen"
-
-class "test_your_brain::screens::game_over_screen.dart::_GameScreenState" {
-  +int score
-  +List<String> numberPad
-  +RandomOperations randomOperators
-  +String userAnswer
-  +int i
-  +void tappedButton()
-  +int checkResult()
-  +void nextOperation()
-  +void Cond()
-  +Widget build()
-}
-
-"test_your_brain::screens::game_over_screen.dart::_GameScreenState" o-- "test_your_brain::utils::random_operators.dart::RandomOperations"
-"flutter::src::widgets::framework.dart::State" <|-- "test_your_brain::screens::game_over_screen.dart::_GameScreenState"
-
 class "test_your_brain::screens::start_screen.dart::StartScreen" {
   +TextEditingController name
   {static} +String routeName
