@@ -160,7 +160,7 @@ class _GameScreenState extends State<GameScreen> {
     return score;
   }
 
-  int i = 0;
+  int i = 1;
   //next question function
   void nextOperation() {
     //removing dialog
@@ -176,7 +176,7 @@ class _GameScreenState extends State<GameScreen> {
 
   void Cond() {
     ///i=4 for now , just for test , will be changed later to 20
-    if (i == 4) {
+    if (i == 5) {
       saveScore(score); // Save the score
       Navigator.pushNamed(
         context,
@@ -239,7 +239,15 @@ class _GameScreenState extends State<GameScreen> {
       body: Column(
         children: [
           Text(
-            "Hello ${widget.name}",
+            "Hello ${widget.name} .",
+            style: TextStyle(fontSize: 20),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Text(
+            "You are now on opertaion number  $i /20",
+            style: TextStyle(fontSize: 20),
           ),
           //logo and Timer////////////////////////////////////////////////
 
@@ -296,3 +304,4 @@ class _GameScreenState extends State<GameScreen> {
     );
   }
 }
+
