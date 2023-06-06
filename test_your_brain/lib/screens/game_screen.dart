@@ -201,30 +201,49 @@ class _GameScreenState extends State<GameScreen> {
     return Scaffold(
       backgroundColor: MyColors.myColor,
       appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          'Test Your Brain',
-          style: TextStyle(color: Colors.white),
-          textAlign: TextAlign.center,
+        centerTitle: false,
+        title: Row(
+          children: [
+            Image.asset(
+              'images/logo_image.jpg',
+              width: 90,
+              height: 52,
+            ),
+            SizedBox(width: 20),
+            Expanded(
+              child: Text(
+                '       Test Your Brain',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.left,
+              ),
+            ),
+          ],
         ),
         elevation: 10,
         backgroundColor: Color.fromARGB(255, 3, 22, 98),
-        leading: Container(
-          child: Image.asset('images/logo_image.jpg'),
-        ),
+        toolbarHeight: 80,
+        automaticallyImplyLeading:
+            false, // Add this line to remove the leading arrow icon
       ),
       body: Column(
         children: [
+          SizedBox(
+            height: 20,
+          ),
           Text(
-            "Hello ${widget.name} .",
-            style: TextStyle(fontSize: 20),
+            "Hello ${widget.name}",
+            style: TextStyle(fontSize: 25),
           ),
           SizedBox(
             height: 20,
           ),
           Text(
-            "You are now on opertaion number  $i /20",
-            style: TextStyle(fontSize: 20),
+            "Operation Number  $i ",
+            style: TextStyle(fontSize: 25),
           ),
           //logo and Timer////////////////////////////////////////////////
 
@@ -237,7 +256,7 @@ class _GameScreenState extends State<GameScreen> {
                 children: [
                   //operation
                   Text(
-                    '${randomOperators.firstNumber}${randomOperators.operator}${randomOperators.secondNumber}= ',
+                    '${randomOperators.firstNumber}  ${randomOperators.operator}  ${randomOperators.secondNumber}  =  ',
                     style: NumberTextStyle.numberTextStyle,
                   ),
                   //answer

@@ -34,7 +34,7 @@ class StartScreen extends StatelessWidget {
               child: Image.asset('images/logo_image.jpg'),
             ),
             //space
-            const SizedBox(height: 100),
+            const SizedBox(height: 60),
             //text
             const Center(
               child: SizedBox(
@@ -44,7 +44,7 @@ class StartScreen extends StatelessWidget {
                   textAlign: TextAlign.justify,
                   style: TextStyle(
                     fontSize: 20,
-                    fontWeight: FontWeight.w400,
+                    fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
                 ),
@@ -64,32 +64,35 @@ class StartScreen extends StatelessWidget {
                 },
               );
             }),
+            const SizedBox(height: 50),
             //button
             ElevatedButton(
-                onPressed: () => {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => GameScreen(
-                                    name: name.text,
-                                  )))
-                    },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  textStyle: const TextStyle(
-                      // fontSize: 18,
-                      // fontWeight: FontWeight.bold,
-                      ),
-                  minimumSize: const Size(200, 50),
+              onPressed: () => {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => GameScreen(
+                              name: name.text,
+                            )))
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.white,
+                textStyle: const TextStyle(
+                    // fontSize: 18,
+                    // fontWeight: FontWeight.bold,
+                    ),
+                minimumSize: const Size(10, 55),
+              ),
+              child: const Text(
+                'Get Started ?',
+                style: TextStyle(
+                  color: MyColors.myColor,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
                 ),
-                child: const Text(
-                  'Get Started',
-                  style: TextStyle(
-                    color: MyColors.myColor,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                  ),
-                )),
+              ),
+            ),
+            const SizedBox(height: 80),
           ],
         ));
   }

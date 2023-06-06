@@ -69,11 +69,11 @@ class _FinalScreenState extends State<FinalScreen> {
             //current score
             const SizedBox(height: 30),
             Container(
-              width: 500,
-              height: 60,
+              width: 300,
+              height: 65,
               decoration: BoxDecoration(
                 color: MyColors.boxColor,
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(50),
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -91,11 +91,11 @@ class _FinalScreenState extends State<FinalScreen> {
             //old score
             const SizedBox(height: 15),
             Container(
-              width: 500,
-              height: 80,
+              width: 319,
+              height: 65,
               decoration: BoxDecoration(
                 color: MyColors.boxColor,
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(50),
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -123,11 +123,11 @@ class _FinalScreenState extends State<FinalScreen> {
             const SizedBox(height: 20),
             //IF WE WANT TO ADD A LEVEL LATER
             Container(
-              width: 500,
-              height: 60,
+              width: 323,
+              height: 65,
               decoration: BoxDecoration(
                 color: MyColors.boxColor,
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(50),
               ),
               child: Center(
                 child: Text(
@@ -139,7 +139,7 @@ class _FinalScreenState extends State<FinalScreen> {
                 ),
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 25),
 
             ElevatedButton(
               onPressed: () => startGame(context),
@@ -149,10 +149,10 @@ class _FinalScreenState extends State<FinalScreen> {
                     // fontSize: 18,
                     // fontWeight: FontWeight.bold,
                     ),
-                minimumSize: const Size(200, 50),
+                minimumSize: const Size(200, 55),
               ),
               child: const Text(
-                'play again ?',
+                'PLAY AGAIN ?',
                 style: TextStyle(
                   color: MyColors.myColor,
                   fontSize: 25,
