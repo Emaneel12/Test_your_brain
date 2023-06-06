@@ -195,29 +195,6 @@ class _GameScreenState extends State<GameScreen> {
     }
   }
 
-//function to condition the LEVEL///
-
-  /*void levelCond() {
-    if (score < 5) {
-      level = "very Bad";
-    } else {
-      if (score >= 5 || score < 10) {
-        level = "Bad";
-      } else {
-        if (score >= 10 || score < 15) {
-          level = "Good";
-        } else {
-          level = "Very Good";
-        }
-      }
-    }
-    Navigator.pushNamed(
-      context,
-      FinalScreen.routeName,
-      arguments: {'level': level},
-    );
-  }*/
-
   //////////////////////////The SCAFFOLD ///////////////////////////////////////////////////////////////////
   @override
   Widget build(BuildContext context) {
@@ -304,4 +281,3 @@ class _GameScreenState extends State<GameScreen> {
     );
   }
 }
-
