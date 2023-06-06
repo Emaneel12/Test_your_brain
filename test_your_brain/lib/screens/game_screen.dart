@@ -66,7 +66,8 @@ class _GameScreenState extends State<GameScreen> {
         userAnswer = '';
       } else {
         //max numbers ton enter
-        if (userAnswer.length < 3) {
+        if (userAnswer.length < 3 ||
+            (userAnswer.length == 3 && userAnswer.startsWith('-'))) {
           userAnswer += clicked;
         }
       }
@@ -80,6 +81,7 @@ class _GameScreenState extends State<GameScreen> {
       score += 1;
       // user is correct
       showDialog(
+        barrierDismissible: false,
         context: context,
         builder: (context) {
           return AlertDialog(
@@ -121,6 +123,7 @@ class _GameScreenState extends State<GameScreen> {
     } else {
       //// if the answer is incorrect, keep the current operation and reset the user's answer
       showDialog(
+          barrierDismissible: false,
           context: context,
           builder: (context) {
             return AlertDialog(
