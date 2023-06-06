@@ -13,24 +13,20 @@ class NumberButton extends StatelessWidget {
   NumberButton({
     super.key,
     required this.child,
-
     required this.onTap,
-
   });
 
   @override
   Widget build(BuildContext context) {
     //condition so the = is green
     if (child == '=') {
-      buttonColor = Colors.green;
-
+      buttonColor = Color.fromRGBO(76, 175, 80, 1);
     } else if (child == '') {
       buttonColor = MyColors.myColor;
-
     } else if (child == 'DEL') {
-      buttonColor = Colors.red;
+      buttonColor = Color.fromRGBO(244, 67, 54, 1);
     } else if (child == 'AC') {
-      buttonColor = Colors.blueGrey;
+      buttonColor = Color.fromRGBO(96, 125, 139, 1);
     }
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -48,7 +44,6 @@ class NumberButton extends StatelessWidget {
               child,
               style: SmallTextStyle.smallTextStyle,
             ),
-
           ),
         ),
       ),
