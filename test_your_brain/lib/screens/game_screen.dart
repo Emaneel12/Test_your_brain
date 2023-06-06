@@ -66,7 +66,8 @@ class _GameScreenState extends State<GameScreen> {
         userAnswer = '';
       } else {
         //max numbers ton enter
-        if (userAnswer.length < 3) {
+        if (userAnswer.length < 3 ||
+            (userAnswer.length == 3 && userAnswer.startsWith('-'))) {
           userAnswer += clicked;
         }
       }
