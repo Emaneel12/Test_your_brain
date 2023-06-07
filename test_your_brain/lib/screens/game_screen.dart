@@ -232,7 +232,7 @@ class _GameScreenState extends State<GameScreen> {
         backgroundColor: Color.fromARGB(255, 3, 22, 98),
         toolbarHeight: 80,
         automaticallyImplyLeading:
-            false, // Add this line to remove the leading arrow icon
+            false, //remove the leading arrow icon
       ),
       body: Column(
         children: [
