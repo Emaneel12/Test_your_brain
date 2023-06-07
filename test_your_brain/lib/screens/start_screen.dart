@@ -22,12 +22,9 @@ class StartScreen extends StatelessWidget {
     return Scaffold(
         backgroundColor: MyColors.myColor,
         body: ListView(
-          // mainAxisAlignment: MainAxisAlignment.center,
           //space
           children: [
-            Container(
-              height: 200,
-            ),
+            const SizedBox(height: 100),
             SizedBox(
               height: 100,
               width: 350,
@@ -53,44 +50,68 @@ class StartScreen extends StatelessWidget {
 
             //space
             const SizedBox(height: 50),
+            //text
             Builder(builder: (context) {
-              return TextField(
-                controller: name,
-                decoration: InputDecoration(
-                  labelText: 'Entrer votre nom',
-                ),
-                onChanged: (value) {
-                  // Gérer les changements de texte
-                },
+              return Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: SizedBox(
+                        width: 250,
+                        child: TextField(
+                          controller: name,
+                          decoration: const InputDecoration(
+                            labelText: 'Entrer votre nom',
+                            contentPadding: EdgeInsets.symmetric(vertical: 5),
+                          ),
+                          maxLines: 5,
+                          minLines: 1,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               );
             }),
             const SizedBox(height: 50),
             //button
-            ElevatedButton(
-              onPressed: () => {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => GameScreen(
-                              name: name.text,
-                            )))
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.white,
-                textStyle: const TextStyle(
-                    // fontSize: 18,
-                    // fontWeight: FontWeight.bold,
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: ElevatedButton(
+                      onPressed: () => {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => GameScreen(
+                                      name: name.text,
+                                    )))
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        textStyle: const TextStyle(
+                            // fontSize: 18,
+                            // fontWeight: FontWeight.bold,
+                            ),
+                        fixedSize: Size(200, 60),
+                      ),
+                      child: const Text(
+                        'Get Started ?',
+                        style: TextStyle(
+                          color: MyColors.myColor,
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
-                minimumSize: const Size(10, 55),
-              ),
-              child: const Text(
-                'Get Started ?',
-                style: TextStyle(
-                  color: MyColors.myColor,
-                  fontSize: 25,
-                  fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
+              ],
             ),
             const SizedBox(height: 80),
           ],
