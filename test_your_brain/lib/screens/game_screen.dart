@@ -265,7 +265,7 @@ class _GameScreenState extends State<GameScreen> {
                   //answer
                   SizedBox(
                     //color: Colors.amber,
-                    height: 60,
+                    height: 50,
                     width: 90,
                     child: Text(
                       userAnswer,
@@ -279,14 +279,14 @@ class _GameScreenState extends State<GameScreen> {
 
           //buttons of numbers +delete + submit answer///////////////////////////
           Expanded(
-            flex: 2,
+            flex: 3,
             child: Padding(
               padding: const EdgeInsets.all(5.0),
               child: GridView.builder(
                   itemCount: numberPad
                       .length, //number of the boxes also is indexed from 0 to 11
-                  //physics:
-                  //  const NeverScrollableScrollPhysics(), //because it scrolls
+                  physics:
+                      const NeverScrollableScrollPhysics(), //because it scrolls
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 4, //3colomns
                   ),
