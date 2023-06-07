@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test_your_brain/screens/game_screen.dart';
+import 'package:test_your_brain/screens/start_screen.dart';
 
 import '../styles/color.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -15,7 +16,7 @@ class FinalScreen extends StatefulWidget {
 
 class _FinalScreenState extends State<FinalScreen> {
   void startGame(BuildContext context) {
-    Navigator.pushNamed(context, GameScreen.routeName);
+    Navigator.pushNamed(context, StartScreen.routeName);
   }
 
   //Retrieve the old score from shared preferences

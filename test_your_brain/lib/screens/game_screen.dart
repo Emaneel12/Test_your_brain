@@ -85,9 +85,10 @@ class _GameScreenState extends State<GameScreen> {
         context: context,
         builder: (context) {
           return AlertDialog(
+            backgroundColor: Color.fromRGBO(76, 175, 80, 1),
             content: Container(
               height: 200,
-              color: Colors.green,
+              color: Color.fromRGBO(76, 175, 80, 1),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -127,9 +128,10 @@ class _GameScreenState extends State<GameScreen> {
           context: context,
           builder: (context) {
             return AlertDialog(
+              backgroundColor: Color.fromRGBO(244, 67, 54, 1),
               content: Container(
                 height: 200,
-                color: Colors.red,
+                color: Color.fromRGBO(244, 67, 54, 1),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -191,9 +193,9 @@ class _GameScreenState extends State<GameScreen> {
 
   void saveScore(int score) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    int oldScore = prefs.getInt('score') ?? 0;
+    int bestScore = prefs.getInt('score') ?? 0;
 
-    if (score > oldScore) {
+    if (score > bestScore) {
       prefs.setInt('score', score);
     }
   }
@@ -258,15 +260,18 @@ class _GameScreenState extends State<GameScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   //operation
-                  Text(
-                    '${randomOperators.firstNumber}  ${randomOperators.operator}  ${randomOperators.secondNumber}  =  ',
-                    style: NumberTextStyle.numberTextStyle,
+                  SizedBox(
+                    height: 50,
+                    child: Text(
+                      '${randomOperators.firstNumber}  ${randomOperators.operator}  ${randomOperators.secondNumber}  =  ',
+                      style: NumberTextStyle.numberTextStyle,
+                    ),
                   ),
                   //answer
                   SizedBox(
                     //color: Colors.amber,
                     height: 50,
-                    width: 90,
+                    width: 130,
                     child: Text(
                       userAnswer,
                       style: NumberTextStyle.numberTextStyle,
