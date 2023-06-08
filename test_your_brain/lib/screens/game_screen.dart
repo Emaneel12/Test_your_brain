@@ -122,7 +122,6 @@ class _GameScreenState extends State<GameScreen> {
       saveScore(score); // Save the score
       //score
     } else {
-      //// if the answer is incorrect, keep the current operation and reset the user's answer
       showDialog(
           barrierDismissible: false,
           context: context,
